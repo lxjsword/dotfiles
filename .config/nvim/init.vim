@@ -44,6 +44,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sickill/vim-monokai'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'airblade/vim-gitgutter'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'roxma/vim-tmux-clipboard'
 call plug#end()
 
 " 关联使用的python环境
