@@ -1,4 +1,6 @@
 set nu
+set relativenumber
+set cursorline
 set mouse=nv
 set tabstop=4 
 set softtabstop=4
