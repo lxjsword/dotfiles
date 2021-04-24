@@ -74,7 +74,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode tmux-yank)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode tmux-yank autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -142,7 +142,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# export PATH="/home/ryanxjli/data/miniconda3/bin:$PATH"  # commented out by conda initialize
+export PATH="/home/ryanxjli/data/miniconda3/bin:$PATH"  # commented out by conda initialize
 
 alias vim=nvim
 set -o vi
