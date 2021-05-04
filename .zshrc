@@ -149,3 +149,4 @@ set -o vi
 
 alias ll="ls -alh"
 alias rm="rm -i"
+alias ta="tmux a"

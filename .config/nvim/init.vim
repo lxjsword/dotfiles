@@ -1,11 +1,11 @@
 set rnu
-set cursorline
 set mouse=n
 set tabstop=4 
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set hlsearch
+set cursorline
+
 "设置历史操作记录为1000条
 set history=1000  
 "************编码设置***************
@@ -25,6 +25,20 @@ set showmatch
 " 对退格键提供更好帮助
 set backspace=indent,eol,start"
 set textwidth=120
+
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+set autoread                    " Automatically reread changed files without asking me anything
+set autoindent
+set backspace=indent,eol,start  " Makes backspace key more powerful.
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set ruler                    " Show cursor position
+
+set splitright               " Split vertical windows right to the current windows
+set splitbelow               " Split horizontal windows below to the current windows
 
 let mapleader="\<space>"
 "set clipboard+=unnamedplus
