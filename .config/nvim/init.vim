@@ -1,4 +1,5 @@
 set rnu
+set nu
 set mouse=n
 set tabstop=4 
 set softtabstop=4
@@ -42,6 +43,9 @@ set splitbelow               " Split horizontal windows below to the current win
 
 let mapleader="\<space>"
 "set clipboard+=unnamedplus
+
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
