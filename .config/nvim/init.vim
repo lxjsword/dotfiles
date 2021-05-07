@@ -1,15 +1,14 @@
 set rnu
 set nu
-set mouse=n
+set mouse=nv
 set tabstop=4 
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set cursorline
 
-"设置历史操作记录为1000条
+" 设置历史操作记录为1000条
 set history=1000  
-"************编码设置***************
 " 设置编码格式为utf-8
 set encoding=utf-8
 " 自动判断编码时,依次尝试下编码
