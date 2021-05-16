@@ -125,8 +125,8 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 "主题setting
 syntax enable
 "colorscheme monokai
-colorscheme solarized
-"colorscheme gruvbox
+"colorscheme solarized
+colorscheme gruvbox
 "set background=dark " for the dark version
 set background=light " for the light version
 "let g:gruvbox_contrast_light = 'medium'
