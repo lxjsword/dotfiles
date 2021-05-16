@@ -52,19 +52,21 @@ Plug 'preservim/nerdtree'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'  }
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'luochen1990/rainbow'
+"Plug 'luochen1990/rainbow'
 "Plug 'ycm-core/YouCompleteMe'
 "Plug 'davidhalter/jedi-vim'
 Plug 'vim-airline/vim-airline' 
 Plug 'vim-airline/vim-airline-themes' " 状态栏的主题插件"
 Plug 'Yggdroot/indentLine' "tab对齐线"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sickill/vim-monokai'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'airblade/vim-gitgutter'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'sickill/vim-monokai'
+Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " 关联使用的python环境
@@ -122,17 +124,22 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 "主题setting
 syntax enable
-colorscheme monokai
+"colorscheme monokai
+colorscheme solarized
+"colorscheme gruvbox
+"set background=dark " for the dark version
+set background=light " for the light version
+"let g:gruvbox_contrast_light = 'medium'
 
 "设置背景透明， 要放在主题设置后，防止被覆盖
 hi Normal guibg=NONE ctermbg=NONE
 
 " rainbow setting
-let g:rainbow_active = 1
+"let g:rainbow_active = 1
 
 " airline setting
 "" 设置主题色
-let g:airline_theme='light'"
+let g:airline_theme='light'
 
 " identLine setting
 let g:indentLine_color_term = 243 " 对齐线的颜色
@@ -169,7 +176,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -336,6 +343,6 @@ set nocompatible
 set hidden
 set encoding=utf-8
 nnoremap <silent> <Leader>l :CtrlSpace<CR>
-let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
-let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
-let g:CtrlSpaceSaveWorkspaceOnExit = 1
+"let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+"let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+"let g:CtrlSpaceSaveWorkspaceOnExit = 1
