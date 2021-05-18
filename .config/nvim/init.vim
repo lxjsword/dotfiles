@@ -129,7 +129,6 @@ syntax enable
 colorscheme gruvbox
 "set background=dark " for the dark version
 set background=light " for the light version
-"let g:gruvbox_contrast_light = 'medium'
 
 "设置背景透明， 要放在主题设置后，防止被覆盖
 hi Normal guibg=NONE ctermbg=NONE
@@ -346,3 +345,9 @@ nnoremap <silent> <Leader>l :CtrlSpace<CR>
 "let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 "let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 "let g:CtrlSpaceSaveWorkspaceOnExit = 1
+
+
+" 自定义命令
+command! Pformat :execute '!autopep8 --in-place --aggressive --aggressive %'
+command! Jformat :execute '!python -m json.tool %'
+command! Cformat :execute '!clang-format -i %'
