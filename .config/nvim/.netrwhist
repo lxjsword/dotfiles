@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='scp://root@9.134.20.195:36000//root/data/.cache/tags/'
+let g:netrw_dirhist_6='scp://root@9.134.20.195:36000//root/data/.cache/'
+let g:netrw_dirhist_5='scp://root@9.134.20.195:36000//root/data/'
+let g:netrw_dirhist_4='scp://root@9.134.20.195:36000//root/'
+let g:netrw_dirhist_3='/data/mm64/ryanxjli'
+let g:netrw_dirhist_2='scp://root@9.134.20.195:36000//root/'
+let g:netrw_dirhist_1='/data/mm64/ryanxjli'

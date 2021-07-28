@@ -46,6 +46,15 @@ let mapleader="\<space>"
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
+" netrw配置
+" 1用水平拆分窗口打开文件
+" 2用垂直拆分窗口打开文件
+" 3用新建标签页打开文件
+" 4用前一个窗口打开文件
+let g:netrw_browse_split = 4
+" 文件浏览器的宽度为窗口的25%
+let g:netrw_winsize = 25
+
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'preservim/nerdtree'
@@ -348,6 +357,6 @@ nnoremap <silent> <Leader>l :CtrlSpace<CR>
 
 
 " 自定义命令
-command! Pformat :execute '!autopep8 --in-place --aggressive --aggressive %'
-command! Jformat :execute '!python -m json.tool %'
+command! Pformat :execute '!autopep8 --in-place --aggressive --ignore E402 --max-line-length=120 %'
+command! Jformat :execute '%!python -m json.tool'
 command! Cformat :execute '!clang-format -i %'
