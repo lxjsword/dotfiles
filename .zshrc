@@ -146,6 +146,7 @@ export PATH="/home/ryanxjli/data/miniconda3/bin:$PATH"  # commented out by conda
 
 alias vim=nvim
 set -o vi
+alias ra=ranger
 
 alias ll="ls -alh"
 alias rm="rm -i"

@@ -135,9 +135,9 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 syntax enable
 "colorscheme monokai
 "colorscheme solarized
-colorscheme gruvbox
+"colorscheme gruvbox
 "set background=dark " for the dark version
-set background=light " for the light version
+"set background=light " for the light version
 
 "设置背景透明， 要放在主题设置后，防止被覆盖
 hi Normal guibg=NONE ctermbg=NONE
