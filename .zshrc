@@ -144,6 +144,8 @@ unset __conda_setup
 
 export PATH="/home/ryanxjli/data/miniconda3/bin:$PATH"  # commented out by conda initialize
 
+export EDITOR=nvim
+
 alias vim=nvim
 set -o vi
 alias ra=ranger
