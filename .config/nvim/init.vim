@@ -77,6 +77,7 @@ Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Lokaltog/neoranger'
+Plug 'markstory/vim-zoomwin'
 call plug#end()
 
 " 关联使用的python环境
