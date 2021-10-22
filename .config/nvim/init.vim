@@ -69,17 +69,36 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes' " 状态栏的主题插件"
 Plug 'Yggdroot/indentLine' "tab对齐线"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 Plug 'airblade/vim-gitgutter'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
-Plug 'vim-ctrlspace/vim-ctrlspace'
-Plug 'sickill/vim-monokai'
-Plug 'morhetz/gruvbox'
+"Plug 'vim-ctrlspace/vim-ctrlspace'
+"Plug 'sickill/vim-monokai'
+"Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Lokaltog/neoranger'
 Plug 'markstory/vim-zoomwin'
+Plug 'skywind3000/asyncrun.vim'
+"Plug 'vim-scripts/taglist.vim'
+Plug 'preservim/vimux'
 call plug#end()
+
+function! s:run_tmux(opts)
+    " asyncrun has temporarily changed dir for you
+    " getcwd() in the runner function is the target directory defined in `-cwd=xxx`  
+    let cwd = getcwd()   
+    call VimuxRunCommand('cd ' . shellescape(cwd) . '; ' . a:opts.cmd)
+endfunction
+
+let g:asyncrun_runner = get(g:, 'asyncrun_runner', {})
+let g:asyncrun_runner.tmux = function('s:run_tmux')
+
+"" taglist设置
+"nnoremap <silent> <F8> :TlistToggle<CR>
+"let Tlist_Show_One_File=1
+"let Tlist_File_Fold_Auto_Close=1
+"let Tlist_Use_Horiz_Window=1
 
 " 关联使用的python环境
 let g:python3_host_prog="/home/ryanxjli/data/miniconda3/bin/python"
@@ -127,6 +146,7 @@ noremap go :<C-U>Leaderf! rg --recall<CR>
 
 " if 0, should use `Leaderf gtags --update` first
 let g:Lf_GtagsAutoGenerate = 1
+" default, ctags, new-ctags, pygments
 let g:Lf_Gtagslabel = 'native-pygments'
 noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
 noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
@@ -320,43 +340,43 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 
 
-" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
-let g:gutentags_project_root = ['.git']
+"" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+"let g:gutentags_project_root = ['.git']
 
-" 所生成的数据文件的名称 "
-let g:gutentags_ctags_tagfile = '.tags'
+"" 所生成的数据文件的名称 "
+"let g:gutentags_ctags_tagfile = '.tags'
 
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
-let s:vim_tags = expand('~/data/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-" 检测 ~/.cache/tags 不存在就新建 "
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
+"" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+"let s:vim_tags = expand('~/data/.cache/tags')
+"let g:gutentags_cache_dir = s:vim_tags
+"" 检测 ~/.cache/tags 不存在就新建 "
+"if !isdirectory(s:vim_tags)
+   "silent! call mkdir(s:vim_tags, 'p')
+"endif
 
-" 同时开启 ctags 和 gtags 支持：
-let g:gutentags_modules = []
-if executable('ctags')
-    let g:gutentags_modules += ['ctags']
-endif
-if executable('gtags-cscope') && executable('gtags')
-    let g:gutentags_modules += ['gtags_cscope']
-endif
+"" 同时开启 ctags 和 gtags 支持：
+"let g:gutentags_modules = []
+"if executable('ctags')
+    "let g:gutentags_modules += ['ctags']
+"endif
+"if executable('gtags-cscope') && executable('gtags')
+    "let g:gutentags_modules += ['gtags_cscope']
+"endif
 
-" 配置 ctags 的参数，老的 Exuberant-ctags 不能有 --extra=+q，注意
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-" 如果使用 universal ctags 需要增加下面一行，老的 Exuberant-ctags 不能加下一行
-let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']"
+"" 配置 ctags 的参数，老的 Exuberant-ctags 不能有 --extra=+q，注意
+"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+"" 如果使用 universal ctags 需要增加下面一行，老的 Exuberant-ctags 不能加下一行
+"let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']"
 
-set nocompatible
-set hidden
-set encoding=utf-8
-nnoremap <silent> <Leader>l :CtrlSpace<CR>
-"let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
-"let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
-"let g:CtrlSpaceSaveWorkspaceOnExit = 1
+"set nocompatible
+"set hidden
+"set encoding=utf-8
+"nnoremap <silent> <Leader>l :CtrlSpace<CR>
+""let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+""let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+""let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 " neoranger配置
 " for setting ranger viewmode values
@@ -371,6 +391,7 @@ command! Jformat :execute '%!python -m json.tool'
 command! Cformat :execute '!clang-format -i %'
 command! Ra :execute 'Ranger'
 command! Rc :execute 'RangerCurrentFile'
+cabbrev Run AsyncRun -mode=term -pos=tmux
 
 " 使用F4键调用函数AddAuthor
 map <F4> ms:call AddAuthor()<cr>'S
