@@ -7,6 +7,12 @@ set shiftwidth=4
 set expandtab
 set cursorline
 set foldmethod=indent
+" 不兼容vi运行
+set nocompatible
+" buffer修改后，切换到其它buff不提示
+set hidden
+" 文件类型检测
+filetype plugin indent on
 
 " 设置历史操作记录为1000条
 set history=1000  
@@ -40,6 +46,9 @@ set ruler                    " Show cursor position
 
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
+
+" 支持在Visual模式下，通过C-y复制到系统剪切板
+vnoremap <C-c> "+y
 
 let mapleader="\<space>"
 "set clipboard+=unnamedplus
@@ -370,8 +379,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 "" 如果使用 universal ctags 需要增加下面一行，老的 Exuberant-ctags 不能加下一行
 "let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']"
 
-"set nocompatible
-"set hidden
 "set encoding=utf-8
 "nnoremap <silent> <Leader>l :CtrlSpace<CR>
 ""let g:CtrlSpaceLoadLastWorkspaceOnStart = 1

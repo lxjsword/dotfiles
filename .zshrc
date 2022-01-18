@@ -153,3 +153,11 @@ alias ra=ranger
 alias ll="ls -alh"
 alias rm="rm -i"
 alias ta="tmux a"
+
+function ff()
+{
+    find . -name "*${1}*"
+}
+
+export EDITOR=/usr/bin/nvim
+export CHEATCOLOR=true
